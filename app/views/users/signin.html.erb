@@ -1,0 +1,54 @@
+<h2>Sign In</h2>
+
+<% if !@user.errors.empty? %>
+<div class="alert alert-danger alert-dismissible fade show">
+	Corrija os erros do formulário para continuar
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    	<span aria-hidden="true">&times;</span>
+  	</button>
+</div>
+<% end %>
+
+<h1><%= debug @user.errors[:name].empty?.inspect %></h1>
+
+<%= form_for @user, url: signin_path, html: {class: "nifty_form"} do |f| %>
+	<div class="form-group">
+		<%= label_tag(:user_name, "Nome:") %>
+		<%= f.text_field :name, 
+			class: class_string("form-control", "is-invalid": !@user.errors[:name].empty?) %>
+		<% if !@user.errors[:name].empty? %>
+		<div class="invalid-feedback"><%= @user.errors[:name].first %></div>
+		<% end %>
+	</div>
+
+	<div class="form-group">
+		<%= label_tag(:user_email, "E-mail:") %>
+		<%= f.text_field :email, 
+			class: class_string("form-control", "is-invalid": !@user.errors[:email].empty?) %>
+		<% if !@user.errors[:email].empty? %>
+		<div class="invalid-feedback"><%= @user.errors[:email].first %></div>
+		<% end %>
+	</div>
+
+	<div class="form-group">
+		<%= label_tag(:user_password, "Senha:") %>
+		<%= f.password_field :password, 
+			class: class_string("form-control", "is-invalid": !@user.errors[:password].empty?) %>
+		<% if !@user.errors[:password].empty? %>
+		<div class="invalid-feedback"><%= @user.errors[:password].first %></div>
+		<% end %>
+	</div>
+
+	<div class="form-group">
+		<%= label_tag(:user_password_confirmation, "Confirmar Senha:") %>
+		<%= f.password_field :password_confirmation, 
+			class: class_string("form-control", "is-invalid": !@user.errors[:password_confirmation].empty?) %>
+		<% if !@user.errors[:password_confirmation].empty? %>
+		<div class="invalid-feedback"><%= @user.errors[:password_confirmation].first %></div>
+		<% end %>
+	</div>
+
+	<%= f.submit "Create my account", class: "btn btn-primary" %>
+<% end %>
+
+<pre><%= debug @user.inspect %></pre>
