@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'login#logout', as: 'logout'
   #resources :users
 
+  get '/dashboard', to: 'application#dashboard', as: 'dashboard'
+
 end
