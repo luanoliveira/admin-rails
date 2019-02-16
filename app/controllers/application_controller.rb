@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
 
         @ui.add_menu('dashboard', 'Dashboard', dashboard_path)
         @ui.add_menu('teste', 'Teste')
+        @ui.add_menu('operadores', 'Operadores', operadores_path)
 
         puts @ui.menu
     end

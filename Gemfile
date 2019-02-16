@@ -3,6 +3,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 
+# custom gems
+gem "cocoon"
+gem 'mysql2', '~> 0.5.2'
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.3.1'
+gem 'font-awesome-sass', '~> 5.6.1'
+
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'

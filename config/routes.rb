@@ -10,4 +10,8 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'application#dashboard', as: 'dashboard'
 
+
+  get '/operadores', to: 'operadores#index', as: 'operadores'
+  match '/operadores/create', to: 'operadores#create', as: 'operadores_create', via: [:post, :get]
+  match '/operadores/update/:id', to: 'operadores#update', as: 'operadores_update', via: [:patch, :get]
 end

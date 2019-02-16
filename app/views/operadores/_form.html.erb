@@ -1,0 +1,23 @@
+<%= form_for @operador, url: url do |f| %>
+    <div class="form-group">
+        <%= f.label "Nome" %>
+        <%= f.text_field :nome, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label "E-mail" %>
+        <%= f.text_field :email, class: 'form-control' %>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-header">Atendimentos</div>
+        <%= f.fields_for :atendimentos do |atendimento| %>
+            <%= render 'atendimento_fields', :f => atendimento %>
+        <% end %>
+        <div class="card-footer text-right">
+            <%= link_to_add_association icon('fas', 'plus'), f, :atendimentos, class: 'btn btn-success' %>
+        </div>
+    </div>
+
+    <%= f.submit "Salvar Operador", class: "btn btn-primary" %>
+<% end %>
