@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+for i in 1..100 do
+    email = Faker::Internet.email;
+    op = Operador.find_by(email: email)
+
+    if !op.nil?
+        next
+    end
+
+    Operador.create(
+        nome: Faker::Name.name, 
+        email: email
+    )
+end

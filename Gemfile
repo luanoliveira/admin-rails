@@ -9,6 +9,7 @@ gem 'mysql2', '~> 0.5.2'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-sass', '~> 5.6.1'
+gem 'faker'
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
