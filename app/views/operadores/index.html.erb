@@ -1,6 +1,16 @@
 <h2>List Operadores</h2>
 
-<% if @data_total %>
+<%= form_tag(operadores_path, method: "get", class: 'form-inline') do |f| %>
+    <div class="form-group">
+        <%= text_field(:buscar, :termo, class: 'form-control', value: @termo) %>
+    </div>
+
+    <%= submit_tag('Buscar', class: 'btn btn-secondary') %>
+<% end %>
+
+<p><%= @data_total %> resultados encontrados</p>
+
+<% if @data_total > 0 %>
 <table class="table">
 
     <tr>
