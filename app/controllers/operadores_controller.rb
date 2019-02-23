@@ -11,9 +11,11 @@ class OperadoresController < ApplicationController
             end 
         end
 
-        @data_total = query.count(:id)
+        @data_total = query.count(:id).length
         @data_pages = @data_total/@per_page
-        @data = query.limit(@per_page).offset((@page-1)*@per_page)
+        @data = query
+            .limit(@per_page)
+            .offset((@page-1)*@per_page)
     end
 
     def create
@@ -22,6 +24,8 @@ class OperadoresController < ApplicationController
         if request.post?
             @operador.attributes = params.require(:operador).permit(:nome, :email, :atendimentos_attributes => [:tempo])
             @operador.save
+            add_message(:success, 'Registro criado com sucesso')
+            redirect_to operadores_update_path(@operador.id)
         end
     end
 
@@ -31,6 +35,7 @@ class OperadoresController < ApplicationController
         if request.patch?
             @operador.attributes = params.require(:operador).permit(:nome, :email, :atendimentos_attributes => [:id, :tempo, :_destroy])
             @operador.save
+            add_message_now(:success, 'Registro atualizado com sucesso')
         end
     end
 
@@ -44,7 +49,13 @@ class OperadoresController < ApplicationController
             end
         end
 
-        q = Operador.where("email LIKE ?", "%#{@termo}%")
+        q = Operador
+            .select('operadores.*')
+            .where("email LIKE :termo OR nome LIKE :termo", {
+                termo: "%#{@termo}%"
+            })
+            .left_outer_joins(:atendimentos)
+            .group(:id)
         q
     end
 end

@@ -16,6 +16,7 @@
     <tr>
         <th>Nome</th>
         <th>E-mail</th>
+        <th>Atendimentos</th>
         <th></th>
     </tr>
 
@@ -23,6 +24,7 @@
     <tr>
         <td><%= item.nome %></td>
         <td><%= item.email %></td>
+        <td><%= item.atendimentos.length %></td>
         <td width="1">
             <a href="<%= operadores_update_path(item.id) %>" class="btn btn-primary">
                 <%= icon('far', 'edit') %>

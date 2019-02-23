@@ -7,6 +7,15 @@ class ApplicationController < ActionController::Base
         render 'admin/dashboard'
     end
 
+    protected
+    def add_message(type, message)
+        flash[type] = message
+    end
+
+    def add_message_now(type, message)
+        flash.now[type] = message
+    end
+
     private
     def ui
         @ui = Admin::Ui.new
