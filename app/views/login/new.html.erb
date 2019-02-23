@@ -13,10 +13,6 @@
     <div class="card-header">Sing Up</div>
     <div class="card-body">
 
-    <% if flash[:error] %>
-    <div class="alert alert-danger"><%= flash[:error] %></div>
-    <% end %>
-
     <%= form_for(:login, url: login_path) do |f| %>
         <div class="form-group">
             <%= f.text_field(:email, class: "form-control") %>

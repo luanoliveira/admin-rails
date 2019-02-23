@@ -9,6 +9,11 @@ class UsersController < ApplicationController
             if @user.save
                 # Handle a successful save.
             end
+
+            if !@user.errors.empty?
+                add_message(:danger, "Corrija os erros do formulário para continuar")
+            end
+
         end
     end
 

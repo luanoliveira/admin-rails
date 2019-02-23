@@ -16,7 +16,7 @@ class LoginController < ApplicationController
             redirect_to login_path
         else
             # error
-            flash[:error] = "Erro de login"
+            add_message(:danger, "Erro de login")
             redirect_to login_path
         end
     end

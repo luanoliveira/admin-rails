@@ -1,6 +1,11 @@
 class OperadoresController < ApplicationController
 
     def index
+        #OperadorMailer.welcome.deliver_later
+
+        foo = Luan::Foo.new
+        puts foo.hello
+
         @per_page = 10
         @page = 1
 
@@ -55,6 +60,7 @@ class OperadoresController < ApplicationController
                 termo: "%#{@termo}%"
             })
             .left_outer_joins(:atendimentos)
+            .includes(:atendimentos)
             .group(:id)
         q
     end

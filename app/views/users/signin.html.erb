@@ -1,14 +1,5 @@
 <h2>Sign In</h2>
 
-<% if !@user.errors.empty? %>
-<div class="alert alert-danger alert-dismissible fade show">
-	Corrija os erros do formulário para continuar
-	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    	<span aria-hidden="true">&times;</span>
-  	</button>
-</div>
-<% end %>
-
 <h1><%= debug @user.errors[:name].empty?.inspect %></h1>
 
 <%= form_for @user, url: signin_path, html: {class: "nifty_form"} do |f| %>
