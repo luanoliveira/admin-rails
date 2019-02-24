@@ -1,0 +1,15 @@
+<% if !@docs.blank? %>
+<ol>
+    <% @docs.each do |doc| %>
+    <li>
+        <a href="<%= "/docs/" + File.basename(doc) %>" target="_blank">
+            <%= File.basename(doc) %>
+        </a>
+    </li>
+    <% end %>
+</ol>
+<% end %>
+
+<hr>
+
+<a href="<%= docs_create_path %>" class="btn btn-primary">Novo</a>

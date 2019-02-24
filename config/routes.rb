@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   get '/operadores', to: 'operadores#index', as: 'operadores'
   match '/operadores/create', to: 'operadores#create', as: 'operadores_create', via: [:post, :get]
   match '/operadores/update/:id', to: 'operadores#update', as: 'operadores_update', via: [:patch, :get]
+
+  get '/docs', to: 'docs#index', as: 'docs'
+  get '/docs/create', to: 'docs#create', as: 'docs_create'
 end
